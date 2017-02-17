@@ -1,4 +1,4 @@
-# Video Quickstart for Python
+# Video conference Python
 
 This application should give you a ready-made starting point for writing your
 own video apps with Twilio Video. Before we begin, we need to collect
@@ -42,7 +42,12 @@ virtualenv venv
 source venv/bin/activate
 pip install -r requirements.txt
 ```
-
+Run gen-cert.sh to generate `SSL` certificate.
+```bash
+./gen-cert.sh
+# Then provide all the parameters
+Note: Specify FQDN correctly
+```
 Now we should be all set! Run the application using the `python` command.
 
 ```bash
@@ -50,8 +55,6 @@ python app.py
 ```
 
 Your application should now be running at [http://localhost:5000](http://localhost:5000). Select any room name and join the room. Join the same room with another user in another browser tab or window to start video chatting! When you're finished, deactivate your virtual environment using `deactivate`.
-
-![screenshot of chat app](https://s3.amazonaws.com/com.twilio.prod.twilio-docs/images/video2.original.png)
 
 ## License
 

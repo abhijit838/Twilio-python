@@ -1,5 +1,5 @@
 import os
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify
 from faker import Factory
 from twilio.access_token import AccessToken, VideoGrant
 from dotenv import load_dotenv, find_dotenv
@@ -8,9 +8,11 @@ app = Flask(__name__)
 fake = Factory.create()
 load_dotenv(find_dotenv())
 
+
 @app.route('/')
 def index():
     return app.send_static_file('index.html')
+
 
 @app.route('/token')
 def token():
@@ -18,7 +20,7 @@ def token():
     account_sid = os.environ['TWILIO_ACCOUNT_SID']
     api_key = os.environ['TWILIO_API_KEY']
     api_secret = os.environ['TWILIO_API_SECRET']
-    
+
     # Create an Access Token
     token = AccessToken(account_sid, api_key, api_secret)
 
@@ -34,4 +36,7 @@ def token():
     return jsonify(identity=token.identity, token=token.to_jwt())
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True,
+            ssl_context=('server.crt', 'server.key'),
+            host='10.0.0.35',
+            port=3000)
