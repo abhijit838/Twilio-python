@@ -12,6 +12,6 @@ _mailinglist
 .env
 .env.ps1
 venv
-.idea/*
+.idea
 server.crt
 server.key
